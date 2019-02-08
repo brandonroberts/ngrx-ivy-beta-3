@@ -132,5 +132,8 @@
       }
     }
   },
-  "defaultProject": "ivy-ngrx"
+  "defaultProject": "ivy-ngrx",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }
