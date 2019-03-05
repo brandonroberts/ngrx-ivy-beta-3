@@ -1,27 +1,36 @@
-# IvyNgrx
+# NgRx and Ivy
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.0-beta.0.
+This repo shows NgRx failing to run with Angular Ivy and the latest betas.
 
-## Development server
+## Reproduction Steps
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- Clone the repo
+- Install the dependencies
 
-## Code scaffolding
+```sh
+yarn
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Run the app
 
-## Build
+```
+yarn start --aot
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+- Note that the app compiles successfully
+- Browse to `http://localhost:4200`
+- Note that the app fails at runtime with the error
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+```
+main.ts:13 Error: Dependency array must have arguments.
+    at reflectDependency (core.js:887)
+    at core.js:870
+    at Array.map (<anonymous>)
+    at convertDependencies (core.js:870)
+    at reflectDependencies (core.js:866)
+    at Function.get (core.js:956)
+    at getInjectableDef (core.js:312)
+    at injectableDefOrInjectorDefFactory (core.js:13259)
+    at providerToFactory (core.js:13297)
+    at providerToRecord (core.js:13281)
+```
